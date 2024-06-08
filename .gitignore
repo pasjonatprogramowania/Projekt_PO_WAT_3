@@ -1,0 +1,88 @@
+# Lokalne pliki binarne i tymczasowe
+*.log
+*.obj
+*.o
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Pliki wygenerowane
+*.moc
+*.qrc
+*.rc
+*.res
+
+# Katalogi kompilacji
+/build/
+/bin/
+/obj/
+/lib/
+/develop/
+
+# Pliki ustawień kompilatorów / IDE
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+build/
+
+# Ustawienia Visual Studio Code
+.vscode/
+
+# Ustawienia CLion
+.idea/
+/cmake-build-*/
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki SFML specyficzne dla platform
+# Windows
+*.pdb
+
+# Specyficzne dla OS
+.npm/
+node_modules/
+yarn-error.log
+
+# Inne pliki generowane
+*.swp
+*~
+*.bak
+*.tmp
+*.temp
+
+# Pliki/debug
+*.stackdump
+
+# Katalog dokumentacji
+doc/html/
+doc/latex/
+
+# Pliki logów
+*.log
+
+# Zawartość katalogu cmake-build-debug
+cmake-build-debug
+
+# Biblioteki statyczne i dynamiczne
+*.so
+*.a
+*.dylib
+*.dll
+
+# Pliki tymczasowe systemu operacyjnego
+.DS_Store
+Thumbs.db
+
+# Pliki specyficzne dla edytorów
+*.sublime-project
+*.sublime-workspace
+*.vscode
+.idea/
