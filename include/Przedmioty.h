@@ -6,14 +6,14 @@
 
 using namespace std;
 
-class Zasoby {
+class ZasobyPrzedmiotow {
 protected:
     string nazwa;
     int wartosc;
 
 public:
-    Zasoby(string nazwa, int wartosc);
-    virtual ~Zasoby() = default;
+    ZasobyPrzedmiotow(string nazwa, int wartosc);
+    virtual ~ZasobyPrzedmiotow() = default;
     virtual void przedstaw() = 0;
     virtual string getNazwa() = 0;
     virtual int getWartosc() = 0;
@@ -21,10 +21,10 @@ public:
     virtual void resetuj() = 0;
 
     // Przeciążenie operatora porównania ==
-    bool operator==(const Zasoby& other) const;
+    bool operator==(const ZasobyPrzedmiotow& other) const;
 };
 
-class Przedmiot : public Zasoby {
+class Przedmiot : public ZasobyPrzedmiotow {
 public:
     Przedmiot(string nazwa, int wartosc);
     void przedstaw() override;

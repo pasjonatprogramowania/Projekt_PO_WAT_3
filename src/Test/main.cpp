@@ -1,5 +1,0 @@
-
-class RunTests{
-public:
-
-};

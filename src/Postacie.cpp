@@ -35,6 +35,10 @@ void Postac::przedstaw() {
     cout << "Postac: " << imie << ", Poziom: " << poziom << ", Punkty Zycia: " << punktyZycia << ", Punkty Ataku: " << punktyAtaku << ", Punkty Obrony: " << punktyObrony << endl;
 }
 
+void Postac::zwiekszPunktyZyciaPotwora(Potwor& potwor, int punkty) {
+    potwor.punktyZycia += punkty;
+}
+
 // Implementacje metod klasy Bohater
 Bohater::Bohater(string imie, int poziom, int punktyZycia, int punktyAtaku, int punktyObrony, int punktyDoswiadczenia, int zloto)
         : Postac(imie, poziom, punktyZycia, punktyAtaku, punktyObrony) {
@@ -62,12 +66,24 @@ void Bohater::przedstaw() {
     cout << "Bohater: " << imie << ", Poziom: " << poziom << ", Punkty Zycia: " << punktyZycia << ", Punkty Ataku: " << punktyAtaku << ", Punkty Obrony: " << punktyObrony << ", Punkty Doswiadczenia: " << punktyDoswiadczenia << ", Zloto: " << zloto << endl;
 }
 
+void Bohater::zwiekszPunktyAtakuPostaci(Postac& postac, int punkty) {
+    postac.punktyAtaku += punkty;
+}
+
+void Bohater::zwiekszPunktyZyciaZwierzecia(Zwierze& zwierze, int punkty) {
+    zwierze.punktyZycia += punkty;
+}
+
 // Implementacje metod klasy Potwor
 Potwor::Potwor(string imie, int poziom, int punktyZycia, int punktyAtaku, int punktyObrony)
         : Postac(imie, poziom, punktyZycia, punktyAtaku, punktyObrony) {}
 
 void Potwor::przedstaw() {
     cout << "Potwor: " << imie << ", Poziom: " << poziom << ", Punkty Zycia: " << punktyZycia << ", Punkty Ataku: " << punktyAtaku << ", Punkty Obrony: " << punktyObrony << endl;
+}
+
+void Potwor::zmniejszPunktyObronyPostaci(Postac& postac, int punkty) {
+    postac.punktyObrony -= punkty;
 }
 
 // Implementacje metod klasy Zwierze
@@ -96,7 +112,9 @@ void Zwierze::przyjmijObrazenia(int obrazenia) {
     punktyZycia -= obrazenia;
 }
 
-
+void Zwierze::zwiekszPoziomBohatera(Bohater& bohater) {
+    bohater.poziom++;
+}
 
 bool Postac::operator<(const Postac& other) const {
     return poziom < other.poziom;

@@ -36,6 +36,7 @@ public:
     int getAttackRange();
     CreatureStatistics* stats;
     bool operator==(const Creature& other) const;
+    bool operator!=(const Creature& other) const;
 
 };
 

@@ -1,11 +1,11 @@
 #include "../include/Przedmioty.h"
 
-Zasoby::Zasoby(string nazwa, int wartosc) {
+ZasobyPrzedmiotow::ZasobyPrzedmiotow(string nazwa, int wartosc) {
     this->nazwa = nazwa;
     this->wartosc = wartosc;
 }
 
-Przedmiot::Przedmiot(string nazwa, int wartosc) : Zasoby(nazwa, wartosc) {}
+Przedmiot::Przedmiot(string nazwa, int wartosc) : ZasobyPrzedmiotow(nazwa, wartosc) {}
 
 void Przedmiot::przedstaw() {
     cout << "Przedmiot: " << nazwa << ", Wartosc: " << wartosc << endl;
@@ -52,7 +52,7 @@ void Zbroja::przedstaw() {
 }
 
 
-bool Zasoby::operator==(const Zasoby& other) const {
+bool ZasobyPrzedmiotow::operator==(const ZasobyPrzedmiotow& other) const {
     return nazwa == other.nazwa && wartosc == other.wartosc;
 }
 

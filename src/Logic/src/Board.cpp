@@ -10,16 +10,12 @@ void Board::add(Point _point, Creature _creature) {
     if (!isThatPointOnMap(_point.getX(), _point.getY()) || isThisTileTaken(_point)) {
         throw std::runtime_error("Invalid point or tile already taken");
     }
-
     map[_point] = _creature;
-    if (!equals(_point, map.find(_point)->first)) {
-        throw std::runtime_error("Key does not match the value that should be inserted");
-    }
 }
 
 Creature Board::getCreatureByPoint(Point _point) {
-    for (const auto& entry : map) {
-        if (equals(entry.first, _point)) {
+    for (auto& entry : map) {
+        if (entry.first.getX() == _point.getX() && entry.first.getY() == _point.getY()) {
             return entry.second;
         }
     }
@@ -27,8 +23,8 @@ Creature Board::getCreatureByPoint(Point _point) {
 }
 
 Point Board::getPointByCreature(Creature _creature) {
-    for (const auto& entry : map) {
-        if (equals(entry.second, _creature)) {
+    for (auto& entry : map) {
+        if (entry.second.stats == _creature.stats) {
             return entry.first;
         }
     }
@@ -51,7 +47,7 @@ void Board::move(Point _point, Point _newPoint) {
 
 void Board::pass(Creature _creature) {
     for (auto& entry : map) {
-        if (equals(entry.second, _creature)) {
+        if (entry.second == _creature) {
             map[entry.first] = _creature;
             break;
         }
@@ -101,13 +97,6 @@ bool Board::isThisTileTaken(Point _point) {
     return map.find(_point) != map.end();
 }
 
-bool Board::equals(const Point &val, const Point &toAssert) {
-    return false;
-}
-
-bool Board::equals(const Creature &val, const Creature &toAssert) {
-    return false;
-}
 
 Board::Board(int i, int i1) {
     boardX = i;
@@ -121,3 +110,9 @@ int Board::getWidth() {
 int Board::getHeight() {
     return boardY;
 }
+
+bool Board::operator==(const Board& other) const {
+    return this == &other;
+}
+
+

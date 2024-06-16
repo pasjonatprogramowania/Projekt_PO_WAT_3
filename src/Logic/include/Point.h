@@ -12,6 +12,8 @@ public:
     int getY() const;
     friend bool operator<(const Point& p1, const Point& p2);
     double distance(const Point &_punkt) const;
+    bool operator==(const Point& other) const;
+    bool operator!=(const Point& other) const;
 };
 
 #endif // PUNKT_H

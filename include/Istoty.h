@@ -11,7 +11,6 @@ class Stworzenie {
 protected:
     string imie;
     int poziom;
-    int punktyZycia;
 
 public:
     Stworzenie(string imie, int poziom, int punktyZycia);
@@ -21,6 +20,8 @@ public:
     virtual int getPunktyZycia() = 0;
     virtual void zwiekszPoziom() = 0;
     virtual void przyjmijObrazenia(int obrazenia) = 0;
+
+    int punktyZycia;
 };
 
 #endif // ISTOTY_H

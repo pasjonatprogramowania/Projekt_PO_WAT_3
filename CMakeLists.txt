@@ -32,6 +32,5 @@ add_executable(Test
         src/Test/Point.cpp
         src/Test/Range.cpp
         src/Test/CreatureStatistics.cpp
-        src/Test/main.cpp
 )
 

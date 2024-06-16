@@ -1,21 +1,24 @@
 #include "../include/Pojazdy.h"
 
-Pojazd::Pojazd(string wlasciciel, string typ) {
-    this->wlasciciel = wlasciciel;
-    this->typ = typ;
-}
+Pojazd::Pojazd(string wlasciciel, string typ) : wlasciciel(wlasciciel), typ(typ) {}
 
-Karoca::Karoca(string wlasciciel, string typ, int RokZakupu, int przebieg) : Pojazd(wlasciciel, typ) {
-    this->RokZakupu = RokZakupu;
-    this->przebieg = przebieg;
-}
+PojazdLadowy::PojazdLadowy(string wlasciciel, string typ) : Pojazd(wlasciciel, typ) {}
+
+PojazdWodny::PojazdWodny(string wlasciciel, string typ) : Pojazd(wlasciciel, typ) {}
+
+PojazdPowietrzny::PojazdPowietrzny(string wlasciciel, string typ) : Pojazd(wlasciciel, typ) {}
+
+PojazdKosmiczny::PojazdKosmiczny(string wlasciciel, string typ) : Pojazd(wlasciciel, typ) {}
+
+Karoca::Karoca(string wlasciciel, string typ, int RokZakupu, int przebieg)
+        : PojazdLadowy(wlasciciel, typ), RokZakupu(RokZakupu), przebieg(przebieg) {}
 
 void Karoca::zwiekszPrzebieg(int kilometry) {
-    this->przebieg += kilometry;
+    przebieg += kilometry;
 }
 
 void Karoca::przedstaw() {
-    cout << "Karoca: " << wlasciciel << ", Typ: " << typ << ", Rok Zakupu: " << RokZakupu << ", Przebieg: " << przebieg << endl;
+    cout << "Jestem karoca. Moj wlasciciel to: " << wlasciciel << ", typ: " << typ << endl;
 }
 
 string Karoca::getWlasciciel() {
@@ -31,5 +34,25 @@ void Karoca::zmienTyp(string nowyTyp) {
 }
 
 void Karoca::wykonajPrzeglad() {
-    przebieg = 0;
+    cout << "Wykonuje przeglad karocy." << endl;
+}
+
+void Karoca::jedzDoPrzodu() {
+    cout << "Jade do przodu." << endl;
+}
+
+void Karoca::jedzDoTylu() {
+    cout << "Jade do tylu." << endl;
+}
+
+void Karoca::skrecWLewo() {
+    cout << "Skrecam w lewo." << endl;
+}
+
+void Karoca::skrecWPrawo() {
+    cout << "Skrecam w prawo." << endl;
+}
+
+void Karoca::zatrzymajSie() {
+    cout << "Zatrzymuje sie." << endl;
 }

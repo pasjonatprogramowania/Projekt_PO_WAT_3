@@ -11,5 +11,6 @@ int Range::getUpperPoint() const {
 }
 
 Range::Range() {
-
+    lowerPoint = 0;
+    upperPoint = 0;
 }

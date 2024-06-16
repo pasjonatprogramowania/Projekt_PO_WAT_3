@@ -121,5 +121,9 @@ bool Creature::operator==(const Creature& other) const {
     return this == &other;
 }
 
+bool Creature::operator!=(const Creature &other) const {
+    return this != &other;
+}
+
 
 

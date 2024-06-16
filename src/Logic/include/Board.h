@@ -24,7 +24,7 @@ public:
     void reduceMovement(Creature _creature, int _x, int _y);
     bool isThatPointOnMap(int _x, int _y);
     bool isThisTileTaken(Point _point);
-
+    bool operator==(const Board& other) const;
     int getWidth();
 
     int getHeight();
