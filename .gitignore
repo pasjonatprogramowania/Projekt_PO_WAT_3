@@ -80,7 +80,7 @@ cmake-build-debug
 # Pliki tymczasowe systemu operacyjnego
 .DS_Store
 Thumbs.db
-
+*.rar
 # Pliki specyficzne dla edytorów
 *.sublime-project
 *.sublime-workspace

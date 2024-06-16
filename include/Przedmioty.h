@@ -19,6 +19,9 @@ public:
     virtual int getWartosc() = 0;
     virtual void zmienWartosc(int nowaWartosc) = 0;
     virtual void resetuj() = 0;
+
+    // Przeciążenie operatora porównania ==
+    bool operator==(const Zasoby& other) const;
 };
 
 class Przedmiot : public Zasoby {
@@ -29,6 +32,9 @@ public:
     int getWartosc() override;
     void zmienWartosc(int nowaWartosc) override;
     void resetuj() override;
+
+    // Przeciążenie operatora przypisania =
+    Przedmiot& operator=(const Przedmiot& other);
 };
 
 class Bron : public Przedmiot {
@@ -39,6 +45,9 @@ public:
     Bron(string nazwa, int wartosc, int punktyAtaku);
     int getPunktyAtaku();
     void przedstaw() override;
+
+    // Przeciążenie operatora dodawania +
+    Bron operator+(const Bron& other) const;
 };
 
 class Zbroja : public Przedmiot {
@@ -49,6 +58,9 @@ public:
     Zbroja(string nazwa, int wartosc, int punktyObrony);
     int getPunktyObrony();
     void przedstaw() override;
+
+    // Przeciążenie operatora odejmowania -
+    Zbroja operator-(const Zbroja& other) const;
 };
 
 #endif // PRZEDMIOTY_H

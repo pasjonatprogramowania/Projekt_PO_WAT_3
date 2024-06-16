@@ -50,3 +50,24 @@ int Zbroja::getPunktyObrony() {
 void Zbroja::przedstaw() {
     cout << "Zbroja: " << nazwa << ", Wartosc: " << wartosc << ", Punkty Obrony: " << punktyObrony << endl;
 }
+
+
+bool Zasoby::operator==(const Zasoby& other) const {
+    return nazwa == other.nazwa && wartosc == other.wartosc;
+}
+
+Przedmiot& Przedmiot::operator=(const Przedmiot& other) {
+    if (this != &other) {
+        nazwa = other.nazwa;
+        wartosc = other.wartosc;
+    }
+    return *this;
+}
+
+Bron Bron::operator+(const Bron& other) const {
+    return Bron(nazwa + " + " + other.nazwa, wartosc + other.wartosc, punktyAtaku + other.punktyAtaku);
+}
+
+Zbroja Zbroja::operator-(const Zbroja& other) const {
+    return Zbroja(nazwa + " - " + other.nazwa, wartosc - other.wartosc, punktyObrony - other.punktyObrony);
+}

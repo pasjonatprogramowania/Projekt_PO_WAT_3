@@ -95,3 +95,26 @@ void Zwierze::zwiekszPoziom() {
 void Zwierze::przyjmijObrazenia(int obrazenia) {
     punktyZycia -= obrazenia;
 }
+
+
+
+bool Postac::operator<(const Postac& other) const {
+    return poziom < other.poziom;
+}
+
+Bohater& Bohater::operator+=(int punktyDoswiadczenia) {
+    this->punktyDoswiadczenia += punktyDoswiadczenia;
+    return *this;
+}
+
+Potwor& Potwor::operator-=(int punktyZycia) {
+    this->punktyZycia -= punktyZycia;
+    return *this;
+}
+
+char Zwierze::operator[](int index) const {
+    if (index >= 0 && index < gatunek.length()) {
+        return gatunek[index];
+    }
+    return '\0';
+}
