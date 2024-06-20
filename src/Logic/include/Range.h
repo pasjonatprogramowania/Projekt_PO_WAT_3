@@ -1,6 +1,6 @@
 #ifndef ZAKRES_H
 #define ZAKRES_H
-
+using namespace std;
 class Range {
 private:
     int lowerPoint;

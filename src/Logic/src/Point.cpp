@@ -31,3 +31,10 @@ bool Point::operator==(const Point& other) const {
 bool Point::operator!=(const Point& other) const {
     return x != other.x && y != other.y;
 }
+
+void Point::setX(int i) {
+    x = i;
+}
+void Point::setY(int i) {
+    y = i;
+}

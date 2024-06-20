@@ -1,4 +1,5 @@
 
+#include <memory>
 #include "../include/Board.h"
 
 Board::Board() {
@@ -113,6 +114,10 @@ int Board::getHeight() {
 
 bool Board::operator==(const Board& other) const {
     return this == &other;
+}
+
+std::map<Point, Creature> Board::getMap() {
+    return map;
 }
 
 

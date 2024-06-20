@@ -9,7 +9,7 @@
 class CreatureStatistics {
 public:
     CreatureStatistics(std::string _name, int _attack, int _armor, int _maxHp, int _moveRange, Range _damage,
-                       int _amount, int _attackRange);
+                           int _amount, int _attackRange);
 
 // Getters
     std::string getName();

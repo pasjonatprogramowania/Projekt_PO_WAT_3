@@ -23,14 +23,19 @@ add_executable(Obiektowe main.cpp
         src/Logic/creature/include/CreatureStatistics.h
         src/Logic/src/Range.cpp
         src/Logic/include/Range.h
+        src/Logic/src/GameEngine.cpp
+        src/Logic/include/GameEngine.h
+        src/Logic/src/CreatureTurnQueue.cpp
+        src/Logic/include/CreatureTurnQueue.h
 )
 
 
 add_executable(Test
-        src/Test/Creature.cpp
-        src/Test/Board.cpp
-        src/Test/Point.cpp
-        src/Test/Range.cpp
-        src/Test/CreatureStatistics.cpp
+        src/Test/CreatureTest.cpp
+        src/Test/BoardTest.cpp
+        src/Test/PointTest.cpp
+        src/Test/RangeTest.cpp
+        src/Test/CreatureStatisticsTest.cpp
+        src/Test/CreatureTurnQueueTest.cpp
 )
 

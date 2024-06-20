@@ -4,8 +4,9 @@
 #include "../include/Creature.h"
 #include "../include/CreatureStatistics.h"
 
+using namespace std;
 Creature::Creature(
-        std::string _name,
+        string _name,
         int _attack,
         int _armor,
         int _maxHp,
@@ -15,49 +16,38 @@ Creature::Creature(
         int _attackRange
 ) {
     this->stats = new CreatureStatistics(_name, _attack, _armor, _maxHp, _moveRange, _damage, _amount,
-                                         _attackRange);
+                                             _attackRange);
 }
 
-//void creature::attack(creature* _defender) {
-//    if (_defender->isAlive()) {
-//        int damageToDeal = this->calculateDamage(this, _defender);
-//        _defender->applyDamage(damageToDeal);
-//        this->performAfterAttack(damageToDeal);
-//        this->counterAttack(_defender);
-//    }
-//}
 
-//void creature::counterAttack(creature* _defender) {
-//    if (this->isAlive() && !_defender->stats->wasCounterAttack) {
-//        int counterAttackDamageToDeal = this->calculateDamage(_defender, this);
-//        this->applyDamage(counterAttackDamageToDeal);
-//        _defender->stats->wasCounterAttack = true;
-//        _defender->performAfterAttack(counterAttackDamageToDeal);
-//    }
-//}
-
-void Creature::performAfterAttack(int _damageToDeal) {
-    if (_damageToDeal) {
-        return;
+void Creature::counterAttack(Creature& _defender) {
+    if (this->isAlive() && !_defender.stats->wasCounterAttack) {
+        int damageToDeal = _defender.getDamage().getLowerPoint();
+        this->applyDamage(damageToDeal);
+        _defender.stats->wasCounterAttack = true;
+//        _defender.performAfterAttack(damageToDeal); // przyszla implementacja
     }
 }
 
+//void Creature::performAfterAttack(int _damageToDeal) {
+//    if (_damageToDeal) {
+//        return;
+//    }
+//}
+
 void Creature::applyDamage(int _damageToDeal) {
     int totalAmountHp = this->getMaxHp() * (this->getAmount() - 1) + this->stats->currentHp - _damageToDeal;
+
     if (totalAmountHp <= 0) {
         this->stats->amount = 0;
         this->stats->currentHp = 0;
     } else {
-        if (totalAmountHp % this->getMaxHp() == 0) {
-            this->stats->currentHp = this->getMaxHp();
-            this->stats->amount = totalAmountHp / this->getMaxHp();
-        } else {
-            this->stats->currentHp = totalAmountHp % this->getMaxHp();
-            if (_damageToDeal >= 0) {
-                this->stats->amount = std::floor(totalAmountHp / this->getMaxHp()) + 1;
-            } else {
-                this->stats->amount = std::floor(totalAmountHp / this->getMaxHp());
-            }
+        this->stats->amount = totalAmountHp / this->getMaxHp();
+        this->stats->currentHp = totalAmountHp % this->getMaxHp();
+        if (this->stats->currentHp > 0) {
+            this->stats->amount += 1;
+        } else if (this->stats->amount == 0) {
+            this->stats->currentHp = 0;
         }
     }
 }
@@ -74,7 +64,7 @@ bool Creature::canCounterAttack() {
     return !this->stats->wasCounterAttack;
 }
 
-std::string Creature::getName() {
+string Creature::getName() {
     return this->stats->name;
 }
 
@@ -115,7 +105,7 @@ int Creature::getAttackRange() {
 
 Creature::Creature() {
     auto *rang = new Range(1, 1);
-    this->stats = new CreatureStatistics("Test", 10, 10, 100, 10,*rang, 10, 10);
+    this->stats = new CreatureStatistics("", 10, 10, 100, 10, *rang, 10, 10);
 }
 bool Creature::operator==(const Creature& other) const {
     return this == &other;
@@ -124,6 +114,25 @@ bool Creature::operator==(const Creature& other) const {
 bool Creature::operator!=(const Creature &other) const {
     return this != &other;
 }
+
+void Creature::attack(Creature& attacker, Creature& defender) {
+    if (defender.isAlive()) {
+        int damageToDeal = attacker.getDamage().getLowerPoint();
+        defender.applyDamage(damageToDeal);
+//        attacker.performAfterAttack(damageToDeal);
+        attacker.counterAttack(defender);
+    }
+}
+void Creature::attack(Creature _defender) {
+    if (_defender.isAlive()) {
+        int damageToDeal = this->getDamage().getLowerPoint();
+        _defender.applyDamage(damageToDeal);
+//        this->performAfterAttack(damageToDeal);
+        this->counterAttack(_defender);
+    }
+}
+
+
 
 
 

@@ -8,7 +8,7 @@
 
 #ifndef BOARD_H
 #define BOARD_H
-
+using namespace std;
 class Board {
 public:
     Board();
@@ -29,12 +29,12 @@ public:
 
     int getHeight();
 
+    map<Point, Creature> getMap();
+
 private:
-    std::map<Point, Creature> map;
+    map<Point, Creature> map;
     int boardX;
     int boardY;
-    bool equals(const Point& val, const Point& toAssert);
-    bool equals(const Creature& val, const Creature& toAssert);
 };
 
 #endif // BOARD_H

@@ -1,6 +1,6 @@
 #ifndef PUNKT_H
 #define PUNKT_H
-
+using namespace std;
 class Point {
 private:
     int x;
@@ -14,6 +14,9 @@ public:
     double distance(const Point &_punkt) const;
     bool operator==(const Point& other) const;
     bool operator!=(const Point& other) const;
+
+    void setY(int i);
+    void setX(int i);
 };
 
 #endif // PUNKT_H

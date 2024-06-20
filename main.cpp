@@ -2,11 +2,12 @@
 #include "include/Przedmioty.h"
 #include "include/Struktury.h"
 #include "include/Pojazdy.h"
-#include "src/Test/Board.cpp"
-#include "src/Test/Creature.cpp"
-#include "src/Test/CreatureStatistics.cpp"
-#include "src/Test/Point.cpp"
-#include "src/Test/Range.cpp"
+#include "src/Test/BoardTest.cpp"
+#include "src/Test/CreatureTest.cpp"
+#include "src/Test/CreatureStatisticsTest.cpp"
+#include "src/Test/PointTest.cpp"
+#include "src/Test/RangeTest.cpp"
+#include "src/Test/CreatureTurnQueueTest.cpp"
 #include <iostream>
 #include <string>
 
@@ -32,6 +33,7 @@ void runTests() {
         CreatureStatisticsTest::runAllTests();
         PointTest::runAllTests();
         RangeTest::runAllTests();
+        CreatureTurnQueueTest::runAllTests();
         cout << "Wszystkie testy przeszly pomyslnie!" << endl;
     } catch (const exception& e) {
         cout << "Wystapil blad podczas testow: " << e.what() << endl;
@@ -155,7 +157,6 @@ void lab2(){
     zwierze.zwiekszPoziomBohatera(bohater);
     bohater.przedstaw();
 }
-
 void lab3(){
     cout<<"Lab 3\n";
     auto* bohater = new Bohater("Archibald", 1, 100, 10, 5, 0, 500);
@@ -243,7 +244,6 @@ void lab5(){
     delete bron;
     delete zbroja;
 }
-
 void labolatoria() {
     lab1();
     lab2();

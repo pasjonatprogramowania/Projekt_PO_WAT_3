@@ -2,7 +2,7 @@
 #include "../include/CreatureStatistics.h"
 
 CreatureStatistics::CreatureStatistics(std::string _name, int _attack, int _armor, int _maxHp, int _moveRange,
-                                       Range _damage, int _amount,int _attackRange) {
+                                               Range _damage, int _amount, int _attackRange) {
     this->name = _name;
     this->attack = _attack;
     this->armor = _armor;
